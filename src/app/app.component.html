@@ -1,3 +1,21 @@
 <h1>
   {{title}}
 </h1>
+
+<h2>Retrive Your Booking</h2>
+    
+<p>You can find your booking by filling out your family name and the booking code in your booking confirmation.</p> 
+  
+<form [formGroup]="registerForm">
+ 
+  <label>Booking Code:</label>
+  <input type="text" formControlName="bookingcode">
+
+  <label>Family name:</label>
+  <input type="text" formControlName="familyname">
+ 
+
+  <button type="submit">Submit</button>
+</form>
+
+ 

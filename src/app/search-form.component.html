@@ -1,0 +1,22 @@
+
+<form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value, myForm.valid)">
+	
+	<div class="form-group">
+		<label for="bookingcode">Booking Code:</label>
+		<input name="bookingcode" type="text" class="form-control" formControlName="bookingcode" required/> 
+		<p class="alert alert-danger" [hidden]="myForm.controls.bookingcode.valid || (myForm.controls.bookingcode.pristine && !submitted)">
+		Booking Code is required.
+		</p>
+	</div>
+	
+	<div class="form-group">
+		<label for="familyname">Family name:</label>
+		<input name="familyname" type="text" class="form-control" formControlName="familyname" required/> 
+		<p class="alert alert-danger" [hidden]="myForm.controls.familyname.valid || (myForm.controls.familyname.pristine && !submitted)">
+		Family Name is required.
+		</p>
+	 </div>
+  
+     <button type="submit" class="btn btn-danger btn-submit-form" [disabled]="!myForm.valid">Retrieve booking</button> 
+
+</form>

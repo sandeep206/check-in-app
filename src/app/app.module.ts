@@ -1,21 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core'; 
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http'; 
-import { MaterialModule } from '@angular/material';
-import { AppComponent } from './app.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
+ 
+import { AppComponent } from './app.component'; 
+import { AppRoutingModule } from './app-routing.module';
+ 
+import { SearchFormComponent } from './search-form.component';
+import { SearchResultComponent } from './search-result.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule, 
-    ReactiveFormsModule,
-    MaterialModule.forRoot(),
-    HttpModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  
+  declarations: [ AppComponent, SearchFormComponent, SearchResultComponent], 
+  imports: [ BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  bootstrap: [ AppComponent ] 
+
 })
-export class AppModule { }
+
+
+export class AppModule { 
+  
+} 

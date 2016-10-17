@@ -1,43 +1,39 @@
  
-import { Component } from '@angular/core'; 
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'; 
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Component, OnInit } from '@angular/core'; 
+import { FormGroup, FormBuilder, Validators } from '@angular/forms'; 
+import { Router } from '@angular/router';
 
 import { Booking } from './booking.interface';
 
 
-@Component({
-	 templateUrl: './search-form.component.html',
-   styleUrls: ['./search-form.component.css'] ,
-})
+  @Component({
+  	 templateUrl: './search-form.component.html',
+     styleUrls: ['./search-form.component.css'] ,
+  })
 
-export class SearchFormComponent {
+export class SearchFormComponent implements OnInit{
 
-    public myForm : FormGroup;
-    public submitted : boolean;
-    public events : any[] = [];
+    public myForm: FormGroup;  
 
-    constructor(private route: ActivatedRoute, private router: Router, private _fb : FormBuilder){
-
-    }
+    constructor(private router: Router, private formBuilder: FormBuilder){ }
 
     ngOnInit(){
 
-      this.myForm = this._fb.group({
-        
-        bookingcode : ['', [<any>Validators.required]],
-        familyname : ['', [<any>Validators.required]] 
+        this.myForm = this.formBuilder.group({
+          
+          bookingcode: ['', [<any>Validators.required]],
+          familyname: ['', [<any>Validators.required]] 
 
-      }) 
+        }) 
 
     }
 
     save(model:Booking, isValid: boolean){
       
-      this.submitted = true;
+      if(typeof model.familyname !== 'undefined' ){
      
-      this.router.navigate(['/search-result', model.familyname ]);
-       
+        this.router.navigate(['/search-result', model.familyname ]);
+      }
     }
 
  }
